@@ -19,4 +19,4 @@ before_install:
   - docker build -t aamirbakhtiar/angular-docker -f Dockerfile.dev .
 
 script:
-  - docker run aamirbakhtiar/angular-docker npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+  - docker run aamirbakhtiar/angular-docker npm run test -- --no-watch --no-progress --browsers=ChromeHeadless
