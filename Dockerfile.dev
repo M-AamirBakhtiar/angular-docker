@@ -1,0 +1,25 @@
+# Specify a Base Image
+FROM node:12-alpine
+
+# Specify a Working Directory
+WORKDIR /app
+
+# add PATH
+ENV PATH /app/node_modules/.bin:$PATH
+
+# Cache package.json
+COPY ./package.json ./
+
+# Install Dependencies
+RUN npm install -g @angular/cli
+RUN npm install
+
+# Copy over Project Files
+COPY ./ ./
+
+# Specify Default ports used by the application
+EXPOSE 4200
+
+# Specify a Default / Start up Command
+CMD ["npm", "start"]
+
