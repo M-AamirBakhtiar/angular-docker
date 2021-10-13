@@ -16,7 +16,7 @@ addons:
 before_install:
   - export CHROME_BIN=chromium-browser
   - export DISPLAY=:99.0
-  - docker build -t aamirbakhtiar/angular-docker -f Dockefile.dev .
+  - docker build -t aamirbakhtiar/angular-docker -f Dockerfile.dev .
 
 script:
   - docker run aamirbakhtiar/angular-docker npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
