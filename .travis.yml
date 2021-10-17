@@ -6,15 +6,8 @@ node_js:
 services:
   - docker
 
-addons:
-  apt:
-    sources:
-      - google-chrome
-    packages:
-      - google-chrome-stable
-
 before_install:
   - docker build -t aamirbakhtiar/angular-docker -f Dockerfile.dev .
 
 script:
-  - docker run aamirbakhtiar/angular-docker npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessNoSandbox
+  - docker run aamirbakhtiar/angular-docker npm run test-headless

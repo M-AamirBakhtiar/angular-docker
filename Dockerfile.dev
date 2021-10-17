@@ -1,21 +1,27 @@
 # Specify a Base Image
 FROM node:12-alpine
 
+# Install Chromium
+RUN apk add chromium
+
 # Specify a Working Directory
 WORKDIR /app
+
+# Add Path to Chromium
+ENV CHROME_BIN=/usr/bin/chromium-browser
 
 # add PATH
 ENV PATH /app/node_modules/.bin:$PATH
 
 # Cache package.json
-COPY ./package.json ./
+COPY package.json .
 
 # Install Dependencies
 RUN npm install -g @angular/cli
 RUN npm install
 
 # Copy over Project Files
-COPY ./ ./
+COPY . .
 
 # Specify Default ports used by the application
 EXPOSE 4200
